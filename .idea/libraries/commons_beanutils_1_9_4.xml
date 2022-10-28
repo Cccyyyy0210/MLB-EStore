@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="commons-beanutils-1.9.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/MLB-EStore/web/WEB-INF/lib/commons-beanutils-1.9.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MLB-EStore/web/WEB-INF/lib/commons-io-2.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MLB-EStore/web/WEB-INF/lib/hamcrest-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MLB-EStore/web/WEB-INF/lib/mysql-connector-java-8.0.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MLB-EStore/web/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MLB-EStore/web/WEB-INF/lib/druid-1.2.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MLB-EStore/web/WEB-INF/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MLB-EStore/web/WEB-INF/lib/commons-fileupload-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MLB-EStore/web/WEB-INF/lib/gson-2.9.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MLB-EStore/web/WEB-INF/lib/junit-4.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MLB-EStore/web/WEB-INF/lib/commons-dbutils-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MLB-EStore/web/WEB-INF/lib/kaptcha-2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/MLB-EStore/web/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
