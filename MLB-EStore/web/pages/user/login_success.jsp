@@ -3,26 +3,35 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>尚硅谷会员注册页面</title>
-    <%@include file="/pages/common/head.jsp" %>
+    <title>MLB-EStore会员注册页面</title>
+    <%@ include file="/pages/common/head.jsp" %>
     <style type="text/css">
         h1 {
+            border: white 2px solid;
+            background-color: white;
+            width:100px;
             text-align: center;
             margin-top: 200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         h1 a {
             color: red;
         }
+
+
+
+
     </style>
 </head>
 <body>
 <div id="header">
-    <img class="logo_img" alt="" src="static/img/logo.gif">
-    <%@include file="/pages/common/login_success_menu.jsp" %>
+    <img class="logo_img" alt="" src="static/img/logo1.gif">
+    <%@ include file="/pages/common/login_success_menu.jsp" %>
 </div>
 
-<div id="main">
+<div id="main" style="background: url('static/img/regist_bgi.png')">
 
     <h1>欢迎回来 <a href="index.jsp">转到主页</a></h1>
 

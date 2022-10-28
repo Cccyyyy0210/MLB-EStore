@@ -3,25 +3,25 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>尚硅谷会员登录页面</title>
-    <%@include file="/pages/common/head.jsp" %>
+    <title>MLB-EStore Login</title>
+    <%@ include file="/pages/common/head.jsp" %>
 </head>
 <body>
 <div id="login_header">
-    <img class="logo_img" alt="" src="static/img/logo.gif">
+    <img class="logo_img" alt="" src="static/img/logo1.gif">
 </div>
 
-<div class="login_banner">
+<div class="login_banner" style="background: url('static/img/regist_bgi.png') ">
 
     <div id="l_content">
-        <span class="login_word">欢迎登录</span>
+        <span class="login_word"></span>
     </div>
 
     <div id="content">
         <div class="login_form">
             <div class="login_box">
                 <div class="tit">
-                    <h1>尚硅谷会员</h1>
+                    <h1>MLB-EStore会员</h1>
                     <a href="pages/user/regist.jsp">立即注册</a>
                 </div>
                 <div class="msg_cont">

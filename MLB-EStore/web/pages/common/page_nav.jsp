@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: zzy
-  Date: 2021/1/26
-  Time: 11:34 下午
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%--分页条的开始--%>
@@ -45,7 +38,7 @@
 
     <c:forEach begin="${begin}" end="${end}" var="i">
         <c:if test="${i == requestScope.page.pageNo}">
-            【${i}】
+            [${i}]
         </c:if>
         <c:if test="${i != requestScope.page.pageNo}">
             <a href="${ requestScope.page.url }&pageNo=${i}">${i}</a>

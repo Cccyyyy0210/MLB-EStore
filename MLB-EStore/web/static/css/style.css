@@ -93,6 +93,8 @@ div{
 
 .logo_img{
 	float: left;
+	height: 90px;
+	margin-top: 0px;
 }
 
 #header div a {
@@ -118,27 +120,30 @@ div{
 /*登录页面CSS样式  */
 
 #login_header{
-	height: 82px;
+	height: 110px;
 	width: 1200px;
 }
 
 .login_banner{
 	height:475px;
-	background-color: #39987c;
+	background: url("../img/regist_bgi.png");
+
 }
 
 .login_form{
 	height:310px;
 	width:406px;
-	float: right;
-	margin-right:50px;
-	margin-top: 50px;
+	/*float: none;*/
+	/*margin-right:50px;
+	margin-top: 50px;*/
+	margin: 0 auto;
 	background-color: #fff;
 }
 
 #content {
 	height: 475px;
 	width: 1200px;
+
 }
 
 .login_box{

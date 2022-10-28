@@ -3,9 +3,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>尚硅谷会员注册页面</title>
+    <title>MLB-EStore Register</title>
 
-    <%@include file="/pages/common/head.jsp" %>
+    <%@ include file="/pages/common/head.jsp" %>
     <script type="text/javascript">
         // 页面加载完成之后
         $(function () {
@@ -107,30 +107,31 @@
             margin-top: 25px;
         }
 
+
     </style>
 </head>
 <body>
 <div id="login_header">
-    <img class="logo_img" alt="" src="static/img/logo.gif">
+    <img class="logo_img" alt="" src="static/img/logo1.gif">
 </div>
 
-<div class="login_banner">
+<div class="login_banner" style="background: url('static/img/regist_bgi.png') ">
 
     <div id="l_content">
-        <span class="login_word">欢迎注册</span>
+        <span class="login_word"></span>
     </div>
 
     <div id="content">
         <div class="login_form">
             <div class="login_box">
                 <div class="tit">
-                    <h1>注册尚硅谷会员</h1>
+                    <h1>注册MLB-EStore会员</h1>
                     <span class="errorMsg">
                         ${requestScope.msg}
                     </span>
                 </div>
                 <div class="form">
-                    <form action="userServlet" method="post">
+                    <form action="registServlet" method="post">
                         <input type="hidden" name="action" value="regist">
                         <label>用户名称：</label>
                         <input class="itxt" type="text" placeholder="请输入用户名"
