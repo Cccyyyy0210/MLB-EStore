@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,26 +22,28 @@ import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 public class UserServlet extends BaseServlet{
     public UserService userService = new UserServiceImpl();
 
-//注销功能
+    //注销功能
     protected void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().invalidate();
         resp.sendRedirect(req.getContextPath());
     }
-//查询用户名是否可用
-        protected void ajaxExistsUsername(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            String username = req.getParameter("username");
-            boolean exitsUsername = userService.existsUsername(username);
-            Map<String, Object> resultMap = new HashMap<String, Object>();
 
-            resultMap.put("exitsUsername", exitsUsername);
+    //查询用户名是否可用
+    protected void ajaxExistsUsername(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+        String username = req.getParameter("username");
+        boolean exitsUsername = userService.existsUsername(username);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
 
-            Gson gson = new Gson();
-            String json = gson.toJson(resultMap);
+        resultMap.put("exitsUsername", exitsUsername);
+
+        Gson gson = new Gson();
+        String json = gson.toJson(resultMap);
 
         resp.getWriter().write(json);
     }
-//登录功能
-    protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    //登录功能
+    protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         User loginUser = userService.login(new User(null, username, password, null));
@@ -55,8 +58,9 @@ public class UserServlet extends BaseServlet{
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         }
     }
+
     //注册功能
-    protected void regist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void regist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
         //1.获取请求参数
         String username = req.getParameter("username");
         String password = req.getParameter("password");

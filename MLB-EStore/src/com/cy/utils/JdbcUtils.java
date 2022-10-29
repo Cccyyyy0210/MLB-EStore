@@ -3,7 +3,9 @@ package com.cy.utils;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
@@ -14,73 +16,66 @@ public class JdbcUtils {
 
     static {
         try {
-            Properties properties = new Properties();
-            // 读取 jdbc.properties属性配置文件
-            InputStream inputStream = JdbcUtils.class.getClassLoader().getResourceAsStream("jdbc.properties");
-            // 从流中加载数据
-            properties.load(inputStream);
-            // 创建 数据库连接 池
-            dataSource = (DruidDataSource) DruidDataSourceFactory.createDataSource(properties);
 
+            Properties properties = new Properties();
+            //读取配置文件,输出到流
+            InputStream inputstream = JdbcUtils.class.getClassLoader().getResourceAsStream("jdbc.properties");
+            //从流中读取文件
+            properties.load(inputstream);
+            //创建连接池
+            dataSource = (DruidDataSource) DruidDataSourceFactory.createDataSource(properties);
+            System.out.println("连接池创建成功");
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
-    /**
-     * 获取数据库连接池中的连接
-     * @return 如果返回null,说明获取连接失败<br/>有值就是获取连接成功
-     */
-    public static Connection getConnection(){
-        Connection conn = conns.get();
-        if (conn == null) {
-            try {
-                conn = dataSource.getConnection();//从数据库连接池中获取连接
-                conns.set(conn); // 保存到ThreadLocal对象中，供后面的jdbc操作使用
-                conn.setAutoCommit(false); // 设置为手动管理事务
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+    //使用数据库连接池
+    public static Connection getConnection() throws SQLException {
+        Connection conn = null;
+        conn = dataSource.getConnection();
         return conn;
     }
 
-    /**
-     * 提交事务，并关闭释放连接
-     */
-    public static void commitAndClose(){
+    //关闭连接,放回连接池
+    public static void close(Connection conn) throws SQLException {
+        if (conn != null) {
+            conn.close();
+        }
+    }
+
+    public static void commitAndClose() {
         Connection connection = conns.get();
-        if (connection != null) { // 如果不等于null，说明 之前使用过连接，操作过数据库
+        if (connection != null) {
             try {
-                connection.commit(); // 提交 事务
+                connection.commit();
+
             } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
                 try {
-                    connection.close(); // 关闭连接，资源资源
+                    connection.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
         }
-        // 执行remove操作（因为Tomcat服务器底层使用了线程池技术）
         conns.remove();
     }
 
-    /**
-     * 回滚事务，并关闭释放连接
-     */
-    public static void rollbackAndClose(){
+
+    public static void rollbackAndClose() {
+
         Connection connection = conns.get();
-        if (connection != null) { // 如果不等于null，说明之前使用过连接，操作过数据库
+        if (connection != null) {
             try {
-                connection.rollback();//回滚事务
+                connection.rollback();
+
             } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
                 try {
-                    connection.close(); // 关闭连接，资源资源
+                    connection.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

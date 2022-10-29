@@ -9,9 +9,38 @@
         <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-    <servlet-name>KaptchaServlet</servlet-name>
-    <url-pattern>/kaptcha.jpg</url-pattern>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <url-pattern>/kaptcha.jpg</url-pattern>
     </servlet-mapping>
 
+
+    <filter>
+        <filter-name>ManagerFilter</filter-name>
+        <filter-class>com.cy.filter.ManagerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ManagerFilter</filter-name>
+        <url-pattern>/pages/manager/*</url-pattern>
+        <url-pattern>/manager/mlbServlet</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>TransactionFilter</filter-name>
+        <filter-class>com.cy.filter.TransactionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TransactionFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/pages/error/404.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/pages/error/500.jsp</location>
+    </error-page>
 
 </web-app>

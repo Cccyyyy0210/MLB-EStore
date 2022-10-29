@@ -29,7 +29,7 @@
             $(".updateCount").change(function () {
                 // 获取商品名称
                 var name = $(this).parent().parent().find("td:first").text();
-                var id = $(this).attr('bookId');
+                var id = $(this).attr('mlbId');
                 // 获取商品数量
                 var count = this.value;
                 if (confirm("你确定要将【" + name + "】商品修改数量为：" + count + " 吗?")) {
@@ -70,7 +70,7 @@
                     <td>${entry.value.name}</td>
                     <td>
                         <input class="updateCount" style="width: 80px;"
-                               bookId="${entry.value.id}"
+                               mlbId="${entry.value.id}"
                                type="text" value="${entry.value.count}">
                     </td>
                     <td>${entry.value.price}</td>

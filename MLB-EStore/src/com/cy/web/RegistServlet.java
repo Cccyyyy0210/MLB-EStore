@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,18 +40,26 @@ public class RegistServlet extends BaseServlet{
 
         //2.检查验证码是否正确
         if (token != null && token.equalsIgnoreCase(code)) {
-            if (userService.existsUsername(username)) {
-                req.setAttribute("msg", "用户名不可用");
-                req.setAttribute("username", username);
-                req.setAttribute("email", email);
-                req.setAttribute("password", password);
-                req.setAttribute("repwd", repwd);
-                req.setAttribute("code", code);
-//                System.out.println("用户名[" + username + "]不可用");
-                req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
-            } else {
-                userService.registUser(user);
-                req.getRequestDispatcher("/pages/user/regist_success.jsp").forward(req, resp);
+            try {
+                if (userService.existsUsername(username)) {
+                    req.setAttribute("msg", "用户名不可用");
+                    req.setAttribute("username", username);
+                    req.setAttribute("email", email);
+                    req.setAttribute("password", password);
+                    req.setAttribute("repwd", repwd);
+                    req.setAttribute("code", code);
+                    //                System.out.println("用户名[" + username + "]不可用");
+                    req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
+                } else {
+                    try {
+                        userService.registUser(user);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    req.getRequestDispatcher("/pages/user/regist_success.jsp").forward(req, resp);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
 
         } else {
@@ -65,8 +74,9 @@ public class RegistServlet extends BaseServlet{
         }
 
     }
+
     //查询用户名是否可用
-    protected void ajaxExistsUsername(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void ajaxExistsUsername(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
         String username = req.getParameter("username");
         boolean exitsUsername = userService.existsUsername(username);
         Map<String, Object> resultMap = new HashMap<String, Object>();

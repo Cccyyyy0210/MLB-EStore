@@ -32,7 +32,7 @@
                 //1 获取用户名输入框里的内容
                 var usernameText = $("#username").val();
                 //2 创建正则表达式对象
-                var usernamePatt = /^\w{5,12}$/;
+                var usernamePatt = /^\w{1,12}$/;
                 //3 使用test方法验证
                 if (!usernamePatt.test(usernameText)) {
                     //4 提示用户结果
@@ -115,6 +115,7 @@
     <img class="logo_img" alt="" src="static/img/logo1.gif">
 </div>
 
+
 <div class="login_banner" style="background: url('static/img/regist_bgi.png') ">
 
     <div id="l_content">
@@ -122,6 +123,13 @@
     </div>
 
     <div id="content">
+
+
+        <img class=""
+             src="//img10.360buyimg.com/n7/jfs/t1/83283/24/22506/99684/635a9fdbE4c04703a/4c10abe59ed3e96f.jpg!q90"
+             width="188" height="188"/>
+
+
         <div class="login_form">
             <div class="login_box">
                 <div class="tit">
@@ -131,8 +139,8 @@
                     </span>
                 </div>
                 <div class="form">
-                    <form action="registServlet" method="post">
-                        <input type="hidden" name="action" value="regist">
+                    <form action="userServlet" method="post">
+                        <%--                        <input type="hidden" name="action" value="regist">--%>
                         <label>用户名称：</label>
                         <input class="itxt" type="text" placeholder="请输入用户名"
                                value="${requestScope.username}"
