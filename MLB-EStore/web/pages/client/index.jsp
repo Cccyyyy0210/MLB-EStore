@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>书城首页</title>
+	<title>MLB-EStore首页</title>
 
 	<%-- 静态包含 base标签、css样式、jQuery文件 --%>
 	<%@ include file="/pages/common/head.jsp" %>
@@ -29,19 +29,19 @@
 <body>
 
 <div id="header">
-    <img class="logo_img" alt="" src="static/img/logo1.gif">
-    <span class="wel_word">网上书城</span>
-    <div>
-        <c:if test="${empty sessionScope.user}">
+	<img class="logo_img" alt="" src="static/img/logo1.gif">
+	<span class="wel_word">MLB-EStore</span>
+	<div>
+		<c:if test="${empty sessionScope.user}">
             <a href="pages/user/login.jsp">登录</a> |
             <a href="pages/user/regist.jsp">注册</a> &nbsp;&nbsp;
         </c:if>
 
-        <c:if test="${not empty sessionScope.user}">
-            <span>欢迎<span class="um_span">${sessionScope.user.username}</span>光临尚硅谷书城</span>
-            <a href="pages/order/order.jsp">我的订单</a>
-            <a href="userServlet?action=logout">注销</a>
-        </c:if>
+		<c:if test="${not empty sessionScope.user}">
+			<span>欢迎<span class="um_span">${sessionScope.user.username}</span>光临MLB-EStore</span>
+			<a href="pages/order/order.jsp">我的订单</a>
+			<a href="userServlet?action=logout">注销</a>
+		</c:if>
 	    <a href="pages/cart/cart.jsp">购物车</a>
 	    <a href="pages/manager/manager.jsp">后台管理</a>
     </div>
@@ -81,12 +81,12 @@
 				</div>
 				<div class="mlb_info">
 					<div class="mlb_name">
-						<span class="sp1">书名:</span>
+						<span class="sp1">商品名称:</span>
 						<span class="sp2">${mlb.name}</span>
 					</div>
 					<div class="mlb_author">
-						<span class="sp1">作者:</span>
-						<span class="sp2">${mlb.author}</span>
+						<span class="sp1">商品简介:</span>
+						<span class="sp2">${mlb.description}</span>
 					</div>
 					<div class="mlb_price">
 						<span class="sp1">价格:</span>
