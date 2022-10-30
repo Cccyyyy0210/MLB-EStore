@@ -18,7 +18,7 @@
 				// 发ajax请求，添加商品到购物车
 				$.getJSON("${basePath}cartServlet", "action=ajaxAddItem&id=" + mlbId, function (data) {
 					$("#cartTotalCount").text("您的购物车中有 " + data.totalCount + " 件商品");
-					$("#cartLastName").text("您刚刚将《" + data.lastName + "》加入到了购物车中");
+					$("#cartLastName").text("您刚刚将" + data.lastName + "加入到了购物车中");
 				})
 			})
 

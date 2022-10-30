@@ -19,7 +19,7 @@
         $(function () {
             // 给 【删除】绑定单击事件
             $("a.deleteItem").click(function () {
-                return confirm("你确定要删除【" + $(this).parent().parent().find("td:first").text() + "】吗?")
+                return confirm("你确定要删除" + $(this).parent().parent().find("td:first").text() + "吗?")
             });
             // 给清空购物车绑定单击事件
             $("#clearCart").click(function () {

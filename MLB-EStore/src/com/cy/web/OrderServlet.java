@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet("/orderServlet")
@@ -25,7 +26,7 @@ public class OrderServlet extends BaseServlet {
      * @throws ServletException
      * @throws IOException
      */
-    protected void createOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void createOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
         // 先获取Cart购物车对象
         Cart cart = (Cart) req.getSession().getAttribute("cart");
         // 获取Userid
@@ -50,7 +51,7 @@ public class OrderServlet extends BaseServlet {
         resp.sendRedirect(req.getContextPath() + "/pages/cart/checkout.jsp");
     }
 
-    protected void myOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void myOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
 
         // 获取Userid
         User loginUser = (User) req.getSession().getAttribute("user");
@@ -69,7 +70,7 @@ public class OrderServlet extends BaseServlet {
         resp.sendRedirect(req.getContextPath() + "/pages/order/order.jsp");
     }
 
-    protected void orderDetails(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void orderDetails(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
 
         String orderId = req.getParameter("orderId");
 
@@ -80,7 +81,7 @@ public class OrderServlet extends BaseServlet {
         resp.sendRedirect(req.getContextPath() + "/pages/order/order.jsp");
     }
 
-    protected void allOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void allOrders(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
 
         List<Order> allOrders = orderService.allOrders();
 
@@ -89,7 +90,7 @@ public class OrderServlet extends BaseServlet {
         resp.sendRedirect(req.getContextPath() + "/pages/order/order.jsp");
     }
 
-    protected void sendOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void sendOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
 
         String orderId = req.getParameter("orderId");
 
@@ -98,7 +99,7 @@ public class OrderServlet extends BaseServlet {
         resp.sendRedirect(req.getContextPath() + "/pages/order/order.jsp");
     }
 
-    protected void receiveOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void receiveOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
 
         String orderId = req.getParameter("orderId");
 

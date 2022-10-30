@@ -25,9 +25,9 @@ public class CartServlet extends BaseServlet {
     protected void ajaxAddItem(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
         // 获取请求的参数 商品编号
         int id = WebUtils.parseInt(req.getParameter("id"), 0);
-        // 调用mlbService.queryMLBById(id):MLB得到图书的信息
+
         MLB mlb = mlbService.queryById(id);
-        // 把图书信息，转换成为CartItem商品项
+        // 转换成为CartItem商品项
         CartItem cartItem = new CartItem(mlb.getId(), mlb.getName(), 1, mlb.getPrice(), mlb.getPrice());
         // 调用Cart.addItem(CartItem);添加商品项
         Cart cart = (Cart) req.getSession().getAttribute("cart");

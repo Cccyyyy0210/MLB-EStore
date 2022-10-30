@@ -9,7 +9,7 @@ public class MLB {
     private BigDecimal price;
     private Integer sales;
     private Integer stock;
-    private String imgPath = "/static/img/default.jpg";
+    private String imgPath = "/MLB_EStore/static/img/default.jpg";
 
     public MLB() {
     }
@@ -21,7 +21,9 @@ public class MLB {
         this.price = price;
         this.sales = sales;
         this.stock = stock;
-        this.imgPath = imgPath;
+        if (imgPath != null && !"".equals(imgPath)) {
+            this.imgPath = imgPath;
+        }
     }
 
     public Integer getId() {
@@ -77,7 +79,9 @@ public class MLB {
     }
 
     public void setImgPath(String imgPath) {
-        this.imgPath = imgPath;
+        if (imgPath != null && !"".equals(imgPath)) {
+            this.imgPath = imgPath;
+        }
     }
 //private String imgPath;
 

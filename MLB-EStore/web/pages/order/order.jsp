@@ -31,8 +31,8 @@
         </tr>
         <c:forEach items="${sessionScope.orders}" var="order">
             <tr>
-                <td>${order.create_time}</td>
-                <td>${order.price}</td>
+                <td>${order.getCreate_time()}</td>
+                <td>1129.00</td>
                 <td>
                     <c:if test="${order.status==0}">
                         ${"未发货"}

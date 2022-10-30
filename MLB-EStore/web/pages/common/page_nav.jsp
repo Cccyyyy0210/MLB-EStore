@@ -57,7 +57,8 @@
     到第<input value="${param.pageNo}" name="pn" id="pn_input"/>页
     <input id="searchPageBtn" type="button" value="确定">
 
-    <script type="text/javascript">
+
+	    <script type="text/javascript">
 
         $(function () {
             // 跳到指定的页码

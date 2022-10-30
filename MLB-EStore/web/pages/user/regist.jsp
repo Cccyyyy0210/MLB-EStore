@@ -124,12 +124,6 @@
 
     <div id="content">
 
-
-        <img class=""
-             src="//img10.360buyimg.com/n7/jfs/t1/83283/24/22506/99684/635a9fdbE4c04703a/4c10abe59ed3e96f.jpg!q90"
-             width="188" height="188"/>
-
-
         <div class="login_form">
             <div class="login_box">
                 <div class="tit">
